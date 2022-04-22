@@ -65,8 +65,8 @@ function validAnagram(str1, str2) {
   for (let value of str2) {
     fCount2[value] = (fCount2[value] || 0) + 1;
   }
-  console.log(fCount1);
-  console.log(fCount2);
+  // console.log(fCount1);
+  // console.log(fCount2);
   for (var key in fCount1) {
     if (!(key in fCount2)) {
       return false;
@@ -78,4 +78,28 @@ function validAnagram(str1, str2) {
   return true;
 }
 
-console.log(validAnagram("qwerty", "qeywrt"));
+//console.log(validAnagram("qwerty", "qeywrt"));
+
+function validAnagram1(str1, str2) {
+  if (str1.length !== str2.length) {
+    return false;
+  }
+  let lookup = {};
+  for (let i = 0; i < str1.length; i++) {
+    let letter = str1[i];
+    lookup[letter] ? (lookup[letter] += 1) : (lookup[letter] = 1);
+  }
+  console.log(lookup);
+  for (let i = 0; i < str2.length; i++) {
+    let letter = str2[i];
+    if (!lookup[letter]) {
+      return false;
+    } else {
+      lookup[letter] -= 1;
+    }
+  }
+  console.log(lookup);
+  return true;
+}
+
+console.log(validAnagram1("anagram", "nagaram"));
