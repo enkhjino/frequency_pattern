@@ -21,3 +21,27 @@ function same(arr1, arr2) {
 }
 
 console.log(same([1, 2, 3], [4, 1, 9]));
+//2 O(N)
+function same1(arr1, arr2) {
+  //if the lengths dont match, its already false
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+  let freCount1 = {};
+  let freCount2 = {};
+  for (let val of arr1) {
+    freCount1[val] = (freCount1[val] || 0) + 1;
+  }
+  for (let val of arr2) {
+    freCount2[val] = (freCount2[val] || 0) + 1;
+  }
+  for (let key in freCount1) {
+    if (!(key ** 2 in freCount2)) {
+      return false;
+    }
+    if (freCount2[key ** 2] !== freCount1[key]) {
+      return false;
+    }
+  }
+  return true;
+}
