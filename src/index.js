@@ -20,7 +20,7 @@ function same(arr1, arr2) {
   return true;
 }
 
-console.log(same([1, 2, 3], [4, 1, 9]));
+//console.log(same1([1, 2, 3], [4, 1, 9]));
 //2 O(N)
 function same1(arr1, arr2) {
   //if the lengths dont match, its already false
@@ -45,3 +45,37 @@ function same1(arr1, arr2) {
   }
   return true;
 }
+
+//3 ANAGRAMS
+// Given 2 strings, write a function to determine if the 2nd string is an anagram of the first.
+//A anagram is a word, phrase, or name formaed by rearrenging the
+//letters of another, such as cinema, formed from iceman.
+//input=> 2 strings
+//output=> bool (T/F)
+//edge case? if str1 or2 = empty, anything other than letters/numbers
+function validAnagram(str1, str2) {
+  if (str1.length !== str2.length) {
+    return false;
+  }
+  let fCount1 = {};
+  let fCount2 = {};
+  for (let value of str1) {
+    fCount1[value] = (fCount1[value] || 0) + 1;
+  }
+  for (let value of str2) {
+    fCount2[value] = (fCount2[value] || 0) + 1;
+  }
+  console.log(fCount1);
+  console.log(fCount2);
+  for (var key in fCount1) {
+    if (!(key in fCount2)) {
+      return false;
+    }
+    if (fCount2[key] !== fCount1[key]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(validAnagram("qwerty", "qeywrt"));
