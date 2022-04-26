@@ -128,3 +128,20 @@ function sameFrequency(one, two) {
   }
   return true;
 }
+
+//5 write a function that takes numbers and checks if there are any duplicates and returns T/F
+//fre count way O(N)
+function duplicates() {
+  let obj = {};
+  for (var val of arguments) {
+    obj[arguments[val]] = (obj[arguments[val]] || 0) + 1;
+  }
+  for (var val in obj) {
+    if (obj[val] > 1) {
+      return true;
+    }
+  }
+  return false;
+}
+
+//console.log(duplicates(1,2,2,3))
