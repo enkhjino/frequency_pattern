@@ -145,3 +145,27 @@ function duplicates() {
 }
 
 //console.log(duplicates(1,2,2,3))
+
+// 6 multiplepointers way O(N)
+function duplicate(...args) {
+  args.sort((a, b) => a - b);
+  var first = 0;
+  var second = 1;
+  while (second < args.length) {
+    if (args[first] === args[second]) {
+      return true;
+    }
+    first++;
+    second++;
+  }
+  return false;
+}
+
+console.log(duplicate(1, 1, 1, 2, 2, 2, 3));
+
+//7 (n log n)
+function duplicate1() {
+  return new Set(arguments).size !== arguments.length;
+}
+
+//console.log(duplicate(1, 2, 2, 3))
