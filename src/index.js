@@ -102,4 +102,29 @@ function validAnagram1(str1, str2) {
   return true;
 }
 
-console.log(validAnagram1("anagram", "nagaram"));
+//console.log(validAnagram1("anagram", "nagaram"));
+
+//4.Write a function called sameFrequency. Given 2int, find out if the 2 nums have the same frequency of digits
+// console.log(sameFrequency(182, 281))
+//console.log(sameFrequency(34, 14))
+
+function sameFrequency(one, two) {
+  var first = one.toString();
+  var second = two.toString();
+  if (first.length !== second.length) return false;
+  let f1 = {};
+  let f2 = {};
+  for (var val of first) {
+    f1[val] = (f1[val] || 0) + 1;
+  }
+  console.log(f1);
+  for (var val of second) {
+    f2[val] = (f2[val] || 0) + 1;
+  }
+  console.log(f2);
+  for (var key in f1) {
+    if (!(key in f2)) return false;
+    if (f1[key] !== f2[key]) return false;
+  }
+  return true;
+}
